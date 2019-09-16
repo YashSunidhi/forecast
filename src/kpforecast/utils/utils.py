@@ -15,7 +15,7 @@ from statsmodels.tsa.stattools import acf
 
 from pandas.core.nanops import nanmean as pd_nanmean
 from statsmodels.tsa.seasonal import DecomposeResult
-from statsmodels.tsa.filters._utils import _maybe_get_pandas_wrapper_freq
+from statsmodels.tsa.filters._utils import _get_pandas_wrapper
 import statsmodels.api as sm
 
 
@@ -116,7 +116,7 @@ class Utilities:
         """
         # use some existing pieces of statsmodels
         lowess = sm.nonparametric.lowess
-        _pandas_wrapper, _ = _maybe_get_pandas_wrapper_freq(df)
+        _pandas_wrapper, _ = _get_pandas_wrapper(df)
 
         # get plain np array
         observed = np.asanyarray(df).squeeze()
